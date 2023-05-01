@@ -21,16 +21,6 @@ use Illuminate\Support\Facades\Validator;
 class ProfileController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //$this->middleware('auth');
-    }
-
-    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
@@ -40,7 +30,8 @@ class ProfileController extends Controller
         $user = User::find($id);
         if($user != Null) {
             $role = Role::all();
-            return view('profile.index', compact('user', 'role', ));
+            $recipes = Recipe::where('author_id', $id)->get();
+            return view('profile.index', compact('user', 'role', 'recipes'));
         }
         else
         {
@@ -135,15 +126,16 @@ class ProfileController extends Controller
         }
     }
 
-    public function store() {
+    public function store(Request $request) {
         $data = request()->validate([
             'title' => ['required', 'string', 'min:8', 'max:150'],
-            'description' => ['required', 'string', 'min:8', 'max:200'],
+            'editordata' => ['required', 'string', 'min:8', 'max:500'],
             'code' => ['required', 'string'],
             'category' => ['required', 'int'],
             'language' => ['required', 'string'],
             'tags' => [],
         ]);
+
 
         $language = Language::where('abbreviatedEdit', $data['language'])->first();
 
@@ -151,7 +143,7 @@ class ProfileController extends Controller
 
         $recipe = Recipe::create([
             'title' => $data['title'],
-            'description' => $data['description'],
+            'description' => $data['editordata'],
             'code' => $data['code'],
             'author_id' => Auth::user()->id,
             'rating' => '0',
@@ -207,10 +199,12 @@ class ProfileController extends Controller
 
 
         $data = request()->validate([
-            'file' => ['required', 'image', 'dimensions:max_width=350px,max_height=250px'],
+            'file' => ['required', 'image', 'dimensions:max_width=350px,max_height=350px'],
         ]);
 
         $imageName = time() . '.' . $data['file']->extension();
+
+        dd($imageName);
 
         $data['file']->move(public_path('img/imageUser/'), $imageName);
 
@@ -225,36 +219,6 @@ class ProfileController extends Controller
         User::where('id', $id)->update([
             'photoPath' => $file,
         ]);
-
-
-        // $data = request()->validate([
-        //     'file' => ['required', 'image', 'dimensions:max_width=350px,max_height=250px'],
-        // ]);
-
-
-
-        // $imageName = time() . '.' . $data['file']->extension();
-        // $data['file']->move(public_path('img/originImageUser/'), $imageName);
-
-
-
-        // // Создаем миниатюру изображения и сохраняем ее
-        // $thumbnail = Image::make(Storage::path('/public/img/').'originImageUser/'.$imageName);
-        // dd('ff');
-        // $thumbnail->fit(300, 300);
-        // $thumbnail->save(Storage::path('/public/img/').'imageUser/'.$imageName);
-
-
-        // dd('ff');
-        // if($user->photoPath != 'defaulticon.png') {
-        //     unlink(public_path('img/imageUser' . '/' . $user->photoPath));
-        // }
-
-
-        // User::where('id', $id)->update([
-        //     'photoPath' => $file,
-        // ]);
-
 
 
         return back()->with("status", "Иконка успешна сменёна!");

@@ -1,10 +1,12 @@
 @extends('layouts.admin')
 @section('title') createCategory @endsection
-@section('activeCategory') active @endsection
+@section('activeCategoryAdmin') active @endsection
 @section('content')
 
 <div class="content__recipe">
-    <h3 class="recipe__title mb-5">Создание категории</h3>
+    <div class="recipe__start mb-3">
+        <h3 class="recipe__title mb-5">Создание категории</h3>
+    </div>
 
         <form action="{{ route('admin.categoryStore', ['id' => $user->id]) }}" method="POST" class="form__recipe">
             @csrf

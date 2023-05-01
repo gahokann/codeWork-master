@@ -48,7 +48,8 @@ class CatalogController extends Controller
             'category' => Category::all(),
         ];
 
-        return view('catalog.index', compact('recipes', 'user'), ['array' => $array]);
+
+        return view('catalog.index', compact('recipes', 'user', 'filteredLang', 'filteredTag'), ['array' => $array]);
     }
 
     public function showRecipe($id) {
@@ -73,6 +74,9 @@ class CatalogController extends Controller
             'search' => 'required|string',
         ]);
 
+        $filteredLang = "";
+        $filteredTag = "";
+
         if ($validator->fails())
         {
             return redirect()->back();
@@ -95,7 +99,7 @@ class CatalogController extends Controller
             'category' => Category::all(),
         ];
 
-        return view('catalog.index', compact('recipes', 'user'), ['array' => $array]);
+        return view('catalog.index', compact('recipes', 'user' , 'filteredLang', 'filteredTag'), ['array' => $array]);
     }
 
     public function showTag($tag)
@@ -103,6 +107,8 @@ class CatalogController extends Controller
         $tag = Tag::find($tag);
         if($tag != Null) {
             $recipes = $tag->recipes;
+            $filteredLang = "";
+            $filteredTag = "";
 
             $array = [
                 'tag' => Tag::all(),
@@ -118,7 +124,7 @@ class CatalogController extends Controller
                 $user = "";
             }
 
-            return view('catalog.index', compact('recipes', 'user'), ['array' => $array]);
+            return view('catalog.index', compact('recipes', 'user', 'filteredLang', 'filteredTag'), ['array' => $array]);
         }
         else
         {
@@ -131,6 +137,8 @@ class CatalogController extends Controller
         $category = Category::find($id);
         if($category != Null) {
             $recipes = $category->recipe;
+            $filteredLang = "";
+            $filteredTag = "";
 
             $array = [
                 'tag' => Tag::all(),
@@ -146,7 +154,7 @@ class CatalogController extends Controller
                 $user = "";
             }
 
-            return view('catalog.index', compact('recipes', 'user'), ['array' => $array]);
+            return view('catalog.index', compact('recipes', 'user', 'filteredLang', 'filteredTag', 'category'), ['array' => $array]);
         }
         else
         {
@@ -160,6 +168,8 @@ class CatalogController extends Controller
         if($users != Null) {
 
             $recipes = Recipe::where('author_id', $id)->get();
+            $filteredLang = "";
+            $filteredTag = "";
 
             $array = [
                 'tag' => Tag::all(),
@@ -175,7 +185,7 @@ class CatalogController extends Controller
                 $user = "";
             }
 
-            return view('catalog.index', compact('recipes', 'user'), ['array' => $array]);
+            return view('catalog.index', compact('recipes', 'user', 'filteredLang', 'filteredTag'), ['array' => $array]);
         }
         else
         {

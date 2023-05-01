@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Language;
 use App\Models\Recipe;
 use App\Models\Tag;
 use App\Models\User;
@@ -101,7 +102,9 @@ class AdminController extends Controller
         $user = User::find(Auth::user()->id);
         if($user != Null && $user->id == Auth::user()->id) {
             $recipe = Recipe::find($id);
-            return view('admin.changeRecipe', ['recipe' => $recipe], ['user' => $user]);
+            $language = Language::all();
+
+            return view('admin.changeRecipe', ['recipe' => $recipe], compact('language', 'user'));
         }
 
     }
@@ -266,7 +269,7 @@ class AdminController extends Controller
 
     public function categoryStore($id, Request $request) {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:5|max:50|string',
+            'name' => 'required|max:50|string',
         ]);
 
         if ($validator->fails())

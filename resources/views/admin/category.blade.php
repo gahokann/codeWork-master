@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title') AdminPage @endsection
-@section('activeCategory') active @endsection
+@section('activeCategoryAdmin') active @endsection
 
 @section('content')
 

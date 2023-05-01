@@ -9,6 +9,6 @@
     <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
     @yield('link')
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <title>@yield('title')</title>
+    <title>{{ config('app.name', 'CodeWork') }}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>

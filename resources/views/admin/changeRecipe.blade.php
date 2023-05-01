@@ -1,13 +1,14 @@
 @extends('layouts.profile')
 
 @section('title') myRecipe @endsection
-@section('activePanelAdmin') active @endsection
+@section('activePanelAdminAdmin') active @endsection
 
 @section('content')
 
 <div class="content__recipe">
-    <h3 class="recipe__title mb-5">Редактирование рецепта</h3>
-
+    <div class="recipe__start mb-3">
+        <h3 class="recipe__title">Редактирование рецепта</h3>
+    </div>
         <form action="{{ route('admin.update', ['id' => $recipe->id]) }}" method="POST" class="form__recipe">
             @csrf
             @method('patch')
@@ -29,10 +30,9 @@
                 <label for="exampleInputEmail1">Язык программирования</label>
                 <select onchange="changeMode()" id="language_select" class="form-select" aria-label="Default select example">
                     <option selected>Выберите</option>
-                    <option value="php">PHP</option>
-                    <option value="javascript">JS</option>
-                    <option value="css">CSS</option>
-                    <option value="html">HTML</option>
+                    @foreach ($language as $val)
+                        <option {{ $recipe->language->full_name == $val->full_name ? 'selected=selected' : "" }} value="{{ $val->abbreviatedEdit }}">{{ $val->full_name }}</option>
+                    @endforeach
                   </select>
             </div>
             <div class="form-group mb-4 input__form__recipe">

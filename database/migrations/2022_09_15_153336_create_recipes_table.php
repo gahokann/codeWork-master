@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
             $table->string('title', 100)->nullable(false);
-            $table->string('description', 255)->nullable(false);
+            $table->text('description')->nullable(false);
             $table->text('code')->nullable(false);
             $table->bigInteger('author_id')->unsigned();
             $table->bigInteger('rating')->default(0);

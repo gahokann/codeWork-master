@@ -273,10 +273,24 @@ p {
 }
 
 .sidebar__title {
-    text-align: center;
     padding-top: 10px;
     font-weight: 600;
     font-size: 24px;
+}
+
+.recipe__title {
+    padding: 0 0 0 0;
+}
+
+.sidebar__title.profile {
+    padding: 35px 15px 0 20px;
+}
+
+.sidebar__info__profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px 15px 0 20px;
 }
 
 .sidebar__subtitle {
@@ -300,6 +314,11 @@ p {
     font-family: 'Inter', sans-serif;
 }
 
+.sidebar__nav.admin {
+    margin-top: 20px;
+    padding: 0;
+}
+
 .sidebar__nav__link {
     display: flex;
     align-items: center;
@@ -308,7 +327,7 @@ p {
     height: 44px;
     border-radius: 8px;
     margin: 0 auto;
-    padding: 15px;
+    padding: 10px;
     margin-bottom: 5px;
 }
 
@@ -325,6 +344,18 @@ p {
     width: 24px;
     height: 24px;
     fill: #969696;
+}
+
+
+.sidebar__nav__exit > svg {
+    width: 24px;
+    height: 24px;
+    fill: #f00;
+    margin-left: 10px;
+}
+
+.sidebar__nav__exit.login > svg {
+    fill: green;
 }
 
 .sidebar__nav__link.active > svg {
@@ -387,6 +418,12 @@ p {
     object-fit: cover;
     width: 60px;
     height: 60px;
+    border-radius: 50%;
+}
+.sidebar__profile__logo {
+    object-fit: cover;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
 }
 
@@ -460,7 +497,7 @@ p {
 }
 
 .settings__item__title {
-    font-size: 24px;
+    font-size: 20px;
     padding-bottom: 15px;
 }
 
@@ -479,6 +516,12 @@ p {
     display: flex;
     column-gap: 25px;
     align-items: center;
+    padding-top: 35px;
+}
+
+.recipe__title.settings {
+    padding-top: 35px;
+    padding-left: 25px;
 }
 
 .recipe__search {
@@ -502,19 +545,25 @@ p {
 }
 
 .sidebar__filter__catalog {
-    margin-left: 30px;
+    margin-left: 20px;
     margin-top: 25px;
 }
 
 .filter__overflow {
-    max-height: 200px;
+    max-height: 100%;
     overflow: auto;
+}
+
+.title__admin {
+    margin-top: 25px;
+    margin-left: 20px;
 }
 
 
 .filter__catalog__title {
     font-size: 18px;
     margin-top: 25px;
+    font-weight: 400;
 }
 
 .filter__catalog__title:first-child {
@@ -629,11 +678,19 @@ p {
 }
 
 .content__recipe {
-    margin-left: 50px;
+    padding-left: 25px;
 }
 
 .content__userInfo {
+    padding-top: 35px;
     margin-left: 50px;
+}
+
+.plashka {
+    background: linear-gradient(0deg, rgba(0, 133, 255, 0.1), rgba(0, 133, 255, 0.1)), #FFFFFF;
+    border-radius: 12px;
+    margin: 0 12px;
+    padding: 10px 0;
 }
 
 .content__recipe__items {
@@ -734,8 +791,6 @@ p {
 .content__recipe__item.comment {
     margin-bottom: 25px;
     height: 100%;
-    max-height: 680px;
-    overflow: auto;
 }
 
 .content__recipe__item.comment::-webkit-scrollbar {
@@ -799,3 +854,130 @@ p {
 .card__rating__low {
     background-color: rgb(204, 204, 204);
 }
+
+.content__catalog__title {
+    padding: 35px 0 15px 25px;
+    font-size: 30px;
+}
+
+.catalog__item__card {
+    width: 450px;
+    border: 0.5px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.item__card__info-one {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card__time {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.card__img {
+    object-fit: cover;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+}
+
+.card__name {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.item__title {
+    font-size: 24px;
+}
+
+.item__card__info-two {
+    margin-top: 30px;
+}
+
+.item__card__rating > svg {
+
+}
+
+.catalog__item__card.low-rating {
+    opacity: 0.5;
+    transition: opacity .2s linear;
+}
+.catalog__item__card.low-rating:hover {
+    opacity: 1;
+}
+
+.search__div {
+    width: 100%;
+    position: relative;
+}
+
+.btn__search {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.recipe__item {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 25px;
+
+}
+
+.link__author {
+    transition: all 0.2s linear;
+}
+
+.badge {
+    padding: 0.5rem;
+}
+
+.badge-code {
+    padding: 0.8rem;
+    border-radius: 0.3rem;
+}
+
+.badge-catalog {
+    background-color: transparent !important;
+    border: #ffc107 solid 0.5px;
+}
+
+.badge-catalog.active {
+    background-color: #ffc107 !important;
+    border: 0;
+}
+
+.color-language.green {
+    background-color: rgba(25, 135, 84, 0.5) !important;
+    color: rgba(25, 135, 84, 1) !important;
+}
+
+.color-language.blue {
+    background-color: rgba(13, 110, 253, 0.5) !important;
+    color: rgba(13, 110, 253, 1) !important;
+}
+
+.color-language.red {
+    background-color: rgba(220, 53, 69, 0.5) !important;
+    color: rgba(220, 53, 69, 1) !important;
+}
+
+.color-language.yellow {
+    background-color: rgba(255, 193, 7, 0.5) !important;
+    color: rgba(255, 193, 7, 1) !important;
+}
+
+.color-language.info {
+    background-color: rgba(13, 202, 240, 0.5) !important;
+    color: rgba(13, 202, 240, 1) !important;
+}
+
+.color-language.black {
+    background-color: #f8f9fa !important;
+    color: rgba(0, 0, 0, 1) !important;
+}
+

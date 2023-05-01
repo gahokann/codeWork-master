@@ -5,12 +5,14 @@
 
 @section('content')
 <div class="content__settings">
-    <h1 class="setting__title">Настройки</h1>
+    <div class="recipe__start" style="padding-left: 25px">
+        <h3 class="recipe__title">Настройки</h3>
+    </div>
     <div class="content__inner">
        <div class="settings__items">
 
         <div class="settings__item">
-            <h3 class="settings__item__title">Смена пароля</h3>
+            <h5 class="settings__item__title">Смена пароля</h3>
             <form action="{{ route('profile.update') }}" method="POST">
                 @csrf
                 @method('patch')
@@ -37,7 +39,7 @@
               </form>
         </div>
         <div class="settings__item">
-            <h3 class="settings__item__title">Смена почты</h3>
+            <h5 class="settings__item__title">Смена почты</h3>
             <form action="{{ route('profile.update') }}" method="POST">
                 @csrf
                 @method('patch')

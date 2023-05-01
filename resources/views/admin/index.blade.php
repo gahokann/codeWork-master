@@ -1,11 +1,13 @@
 @extends('layouts.admin')
 
 @section('title') AdminPage @endsection
-@section('activeMain') active @endsection
+@section('activeMainAdmin') active @endsection
 
 @section('content')
     <div class="admin">
-        <h1 class="admin__title">Главная</h1>
+        <div class="recipe__start">
+            <h1 class="admin__title">Главная</h1>
+        </div>
         <div class="admin__items">
             <div class="admin__item">
                 <h4 class="admin__item__title">Информация</h4>

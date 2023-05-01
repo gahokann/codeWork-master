@@ -5,13 +5,12 @@
     <main class="main-profile">
 
         @if(Request::is('catalog/show/recipe/*'))
-            @include('layouts.sidebars.sidebarRecipeInfo')
+            @include('layouts.sidebars.sidebar')
         @else
         @include('layouts.sidebars.sidebarCatalog')
         @endif
         <div class="content">
 
-            @include('layouts.navbars.navbar')
             @yield('content')
 
         </div>

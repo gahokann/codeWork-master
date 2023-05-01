@@ -3,7 +3,7 @@
     <header class="header">
         <div class="header__inner container">
             <div class="header__logo">
-                <a class="header__logo__text" href="#">CodeWork</a>
+                <a class="header__logo__text" href="{{ route('home') }}">CodeWork</a>
             </div>
             <nav class="header__nav">
                 <a href="{{ route('home') }}" class="header__nav__link">Главная</a>
@@ -18,7 +18,7 @@
             <h1 class="main__title">CodeWork</h1>
             <p class="main__subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolor?</p>
             <div class="main__btns">
-                <a href="catalog.html" class="main__btn catalog">Каталог</a>
+                <a href="{{ route('catalog.show') }}" class="main__btn catalog">Каталог</a>
                 <a href="#" class="main__btn link">Связь с нами</a>
             </div>
         </div>

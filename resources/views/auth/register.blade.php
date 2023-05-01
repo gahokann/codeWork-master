@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-    @vite(['resources/css/style.css', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <title>Auth</title>
 </head>
 <body class="body-auth">
@@ -16,8 +16,7 @@
             </div>
             <nav class="header__nav">
                 <a href="#" class="header__nav__link auth">Главная</a>
-                <a href="#" class="header__nav__link auth">Новости</a>
-                <a href="#" class="header__nav__link auth">Каталог</a>
+                <a href="{{ route('catalog.show') }}" class="header__nav__link auth">Каталог</a>
                 <a href="{{ route('profile.home') }}" class="header__nav__link auth">Личный кабинет</a>
             </nav>
         </div>
